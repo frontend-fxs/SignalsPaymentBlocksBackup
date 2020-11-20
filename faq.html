@@ -1,0 +1,167 @@
+<div class="fxs_signals-payment-block" id="fxs_signals-payment-block">
+    <style>
+        .fxs_signals-payment-block {
+            display: none;
+            width: 100%;
+            float: left;
+            height: 56px;
+        }
+
+        .fxs_signals-payment-block-trigger {
+            position: fixed;
+            bottom: 65px;
+            left: 0;
+            right: 0;
+            z-index: 9999999;
+        }
+
+        .fxs_signals-payment-block-trigger-inner {
+            max-width: 1440px;
+            margin: 0 auto;
+            min-height: 56px;
+            padding: 0.5rem 1rem;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            flex-direction: column;
+            border-top: 4px solid #c6d4e1;
+            -webkit-box-shadow: 0px -1px 4px 0px rgba(0, 0, 0, 0.2);
+            -moz-box-shadow: 0px -1px 4px 0px rgba(0, 0, 0, 0.2);
+            box-shadow: 0px -1px 4px 0px rgba(0, 0, 0, 0.2);
+            background-color: #304c70;
+        }
+
+        .fxs_signals-payment-block-trigger .fxs_headline_small {
+            margin: 0;
+        }
+
+        .fxs_signals-payment-block-trigger-title {
+            display: flex;
+        }
+
+        .fxs_signals-payment-block-item {
+            display: flex;
+            flex-direction: column;
+            font-size: 0.7rem;
+            line-height: 0.8rem;
+            margin-left: 1rem;
+            padding: 0.2rem 1rem;
+            margin-top: 1rem;
+            align-items: center;
+            text-decoration: none;
+        }
+
+        .fxs_signals-payment-block-item:hover {
+            text-decoration: none;
+        }
+
+        .fxs_btn_cta_border {
+            border: 1px solid #e4871b;
+            color: #49494f;
+            background-color: white;
+        }
+
+        .fxs_btn_cta_border:hover {
+            background-color: #dddedf;
+        }
+
+        .fxs_signals-payment-block-pricing-mini {
+            display: flex;
+            flex-direction: column;
+        }
+
+        @media (min-width: 680px) {
+            .fxs_signals-payment-block-trigger {
+                bottom: 36px;
+            }
+
+            .fxs_signals-payment-block-pricing-mini {
+                flex-direction: row;
+            }
+        }
+
+        @media (min-width: 900px) {
+            .fxs_signals-payment-block-pricing-mini {
+                display: flex;
+                justify-content: space-between;
+            }
+
+            .fxs_signals-payment-block-item {
+                margin-top: 0;
+                padding: 0.2rem 0.5rem;
+            }
+
+            .fxs_signals-payment-block-trigger-inner {
+                flex-direction: row;
+            }
+        }
+
+        @media (min-width: 1033px) {
+            .fxs_signals-payment-block-item {
+                padding: 0.2rem 2rem;
+            }
+        }
+
+        @media (min-width: 1580px) {
+            .fxs_signals-payment-block-trigger-inner {
+                max-width: 1440px;
+                padding: 0.5rem 1rem 0.5rem 1rem;
+            }
+        }
+    </style>
+    <div class="fxs_signals-payment-block-trigger">
+        <div class="fxs_signals-payment-block-trigger-inner">
+            <h3 class="fxs_headline_small fxs_signals-payment-block-trigger-title fxs_txt_lightest_clr"
+                data-gtmid="features-signals-footer-closed-open">
+                <span>Become a Premium Member of FXStreet Signals</span>
+            </h3>
+            <div class="fxs_signals-payment-block-pricing-mini">
+                <a href="/account/premium-payment?subscriptionid=ba7897ce-e16a-4bb6-8c05-ed4499dc3c29&uritoredirect=/signals"
+                    class="fxs_btn_cta_border fxs_signals-payment-block-item fxs_entryPlain_txt_small"
+                    data-gtmid="features-signals-footer-closed-monthly">
+                    <span>
+                        <strong class="fxs_signals-payment-block-pricing-mini-price">35€ /
+                        </strong>
+                        <span>1 Month</span>
+                    </span>
+                    <span>Total price 35€</span>
+                </a>
+                <a href="/account/premium-payment?subscriptionid=de0212bb-054a-4adb-a3cb-26b11ff3b334&uritoredirect=/signals"
+                    class="fxs_btn_cta_border fxs_signals-payment-block-item fxs_entryPlain_txt_small"
+                    data-gtmid="features-signals-footer-closed-quaterly">
+                    <span>
+                        <strong class="fxs_signals-payment-block-pricing-mini-price">31.66€ /
+                        </strong>
+                        <span>3 Months</span>
+                    </span>
+                    <span>Total Price 94.98€ </span>
+                </a>
+                <a href="/account/premium-payment?subscriptionid=f6bb3ea9-e28d-46ee-8889-6949518353df&uritoredirect=/signals"
+                    class="fxs_btn_cta fxs_signals-payment-block-item fxs_entryPlain_txt_small"
+                    data-gtmid="features-signals-footer-closed-yearly">
+                    <span>
+                        <strong class="fxs_signals-payment-block-pricing-mini-price">26.66€ /
+                        </strong>
+                        <span>12 Months</span>
+                    </span>
+                    <span>Total Price 319.92€ </span>
+                </a>
+            </div>
+        </div>
+    </div>
+    <script>
+        var handleInterval = setInterval(checkElementsReady, 1000);
+        function checkElementsReady() {
+            if (FXStreet.Resource.UserInfo) {
+                clearInterval(handleInterval);
+                var paymentBlock = document.querySelector("#fxs_signals-payment-block");
+                if (FXStreet.Resource.UserInfo.IsPremium) {
+                    paymentBlock.style.display = "none";
+                } else {
+                    paymentBlock.style.display = "block";
+                }
+                dismissPrestitial();
+            }
+        }
+    </script>
+</div>
